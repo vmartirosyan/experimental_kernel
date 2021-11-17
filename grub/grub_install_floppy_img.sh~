@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#install grub on the floppy image
+#make floppy.img file accessible as block device
+#losetup /dev/loop0 floppy.img
+dd if=/dev/zero of=floppy.img bs=512 count=2880
+
+mke2fs floppy.img
+
+mount floppy.img /mnt/floppy -o loop
+mkdir -p /mnt/floppy/boot/grub
+cp 
+umount -f /mnt/floppy
